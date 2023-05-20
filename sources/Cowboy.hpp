@@ -17,7 +17,6 @@ namespace ariel
         Cowboy( string name,Point Current_location);
         ~Cowboy();
         void shoot(Character *enemy);
-        string print() const override;
         int get_num_of_bullets();
         void reload();
         bool isAlive();

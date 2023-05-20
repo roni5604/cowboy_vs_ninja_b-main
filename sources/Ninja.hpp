@@ -17,7 +17,6 @@ namespace ariel{
         void move(Character *enemy);
         void slash(Character *enemy);
         int get_speed();
-        string print() const override;
         void set_speed(int speed);
         bool isAlive();
         bool isNinja() const override;

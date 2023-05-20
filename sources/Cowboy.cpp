@@ -51,10 +51,6 @@ namespace ariel
             }
         }
     }
-    string Cowboy::print() const
-    {
-        return "C";
-    }
 
     int Cowboy::get_num_of_bullets()
     {

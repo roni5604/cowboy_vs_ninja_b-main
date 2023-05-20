@@ -96,7 +96,7 @@ namespace ariel
             }
             Character *pNearEnemy = enemy->fighters[(size_t)location_leader];
 
-            for (size_t i = 0; i < this->fighters.size(); i++)//for all the cowboys
+            for (size_t i = 0; i < this->fighters.size(); i++) // for all the cowboys
             {
                 if (pNearEnemy->get_Hit_points() <= 0)
                 {
@@ -109,14 +109,14 @@ namespace ariel
                 }
                 if (this->fighters[i]->get_Hit_points() > 0)
                 {
-                   if (this->fighters[i]->isNinja()==false)
+                    if (this->fighters[i]->isNinja() == false)
                     {
                         Cowboy *pCowboyToAttack = dynamic_cast<Cowboy *>(this->fighters[i]);
                         pCowboyToAttack->shoot(pNearEnemy);
                     }
                 }
             }
-             for (size_t i = 0; i < this->fighters.size(); i++)//for all the ninjas
+            for (size_t i = 0; i < this->fighters.size(); i++) // for all the ninjas
             {
                 if (pNearEnemy->get_Hit_points() <= 0)
                 {
@@ -133,7 +133,7 @@ namespace ariel
                     if (this->fighters[i]->isNinja())
                     {
                         Ninja *pNinjaToAttack = dynamic_cast<Ninja *>(this->fighters[i]);
-                        if (pNinjaToAttack->getLocation().distance((*pNearEnemy).getLocation()) <= 1)
+                        if (pNinjaToAttack->getLocation().distance((*pNearEnemy).getLocation()) < 1)
                         {
                             pNinjaToAttack->slash(pNearEnemy);
                         }
@@ -145,25 +145,24 @@ namespace ariel
                 }
             }
         }
-        
     }
     void Team::print()
     {
+        cout << "Team:" << endl;
         for (size_t i = 0; i < fighters.size(); i++)
         {
             if (fighters[i]->isNinja())
             {
-                fighters[i]->print();
+                cout << fighters[i]->print() << endl;
             }
         }
         for (size_t i = 0; i < fighters.size(); i++)
         {
             if (fighters[i]->isNinja() == false)
             {
-                fighters[i]->print();
+                cout << fighters[i]->print() << endl;
             }
         }
-
     }
     void Team::remove(Character *fighter_to_remove)
     {
@@ -181,7 +180,7 @@ namespace ariel
     }
     void Team::set_leader(Character *new_leader)
     {
-         this->leader = new_leader;
+        this->leader = new_leader;
     }
     vector<Character *> Team::get_fighters()
     {

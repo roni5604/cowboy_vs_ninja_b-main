@@ -32,7 +32,7 @@ namespace ariel
         {
             if (this->isAlive() && (enemy->get_Hit_points() > 0))
             {
-                if (this->getLocation().distance(enemy->getLocation()) <= 1)
+                if (this->getLocation().distance(enemy->getLocation()) < 1)
                 {
                     enemy->set_Hit_points(enemy->get_Hit_points() - 40);
                 }
@@ -54,10 +54,6 @@ namespace ariel
     {
         return this->speed;
     }
-    string Ninja::print() const
-    {
-        return "N";
-    }
     void Ninja::set_speed(int speed)
     {
         this->speed = speed;
@@ -70,7 +66,7 @@ namespace ariel
         }
         return false;
     }
-    
+
     bool Ninja::isNinja() const
     {
         return true;

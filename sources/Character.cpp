@@ -75,7 +75,30 @@ namespace ariel
     {
         return Current_location;
     }
-   
+
+    string Character::print()
+    {
+        string str_to_return = "";
+        
+        if (this->isNinja())
+        {
+            str_to_return += " N ";
+        }
+        else{
+            str_to_return += " C ";
+        }
+        if(this->get_Hit_points()>0)
+        {
+        str_to_return += "name: " + name + "\n";
+        str_to_return += "hit_points: " + to_string(hit_points) + "\n";
+        str_to_return += "Current_location: " + Current_location.print() + "\n";
+        }
+        else{
+            str_to_return += "(" + name + ")\n";
+        }
+        return str_to_return;
+    }
+
     void Character::moveTowards(Point dest, double maxDistance)
     {
         if (Current_location.distance(dest) <= maxDistance)

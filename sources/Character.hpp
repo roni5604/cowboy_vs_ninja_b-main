@@ -25,7 +25,7 @@ namespace ariel
         string getName();
         int get_Hit_points();
         Point getLocation();
-        virtual string print() const = 0;
+        virtual string print() ;
         void moveTowards(Point dest, double maxDistance);
         void setLocation(Point newLocation);
         void setName(string newName);

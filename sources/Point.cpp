@@ -35,9 +35,9 @@ namespace ariel
         y_Location = 0;
     }
 
-    void Point::print() const
+    string Point::print() const
     {
-        std::cout << "(" << x_Location << ", " << y_Location << ")" << std::endl;
+        return "(" + to_string(x_Location )+ ", " + to_string(y_Location) + ")";
     }
 
     Point Point::moveTowards(Point &source_point,Point &other_point ,double maxDistance) 

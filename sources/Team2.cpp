@@ -15,7 +15,7 @@ namespace ariel
     {
     }
 
-    void Team2::attack(Team *enemy) 
+    void Team2::attack(Team *enemy)
     {
         if (enemy == nullptr)
         {
@@ -63,7 +63,6 @@ namespace ariel
                 throw std::runtime_error("all enemy team is dead");
             }
             Character *pNearEnemy = enemy->get_fighters()[(size_t)location_leader];
-            
 
             for (size_t i = 0; i < this->fighters.size(); i++)
             {
@@ -103,9 +102,10 @@ namespace ariel
     void Team2::print()
     {
         cout << "Team2:" << endl;
-        for (size_t i = 0; i < this->fighters.size(); i++)
+        for (size_t i = 0; i < fighters.size(); i++)
         {
-            this->fighters[i]->print();
+
+            cout << fighters[i]->print() << endl;
         }
     }
 }

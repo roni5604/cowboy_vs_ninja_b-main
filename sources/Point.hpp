@@ -17,7 +17,7 @@ namespace ariel
         Point(const Point &other);
         Point &operator=(const Point &other);
         ~Point();
-        void print() const;
+        string print() const;
         static Point moveTowards( Point &source_point,Point &other_point, double maxDistance);
         double getX() const;
         double getY() const;
