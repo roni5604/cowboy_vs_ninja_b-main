@@ -87,7 +87,22 @@ namespace ariel
                             }
                             else
                             {
-                                pNinjaToAttack->move(pNearEnemy);
+                                bool otherNinjaToAttack = true;
+                                for (size_t j = 0; (j < (*enemy).get_fighters().size()) && (otherNinjaToAttack); j++)
+                                {
+                                    if ((*enemy).get_fighters()[j]->get_Hit_points() > 0)
+                                    {
+                                        if (this->fighters[i]->getLocation().distance((*enemy).get_fighters()[j]->getLocation()) <= 1)
+                                        {
+                                            otherNinjaToAttack = false;
+                                            pNinjaToAttack->slash((*enemy).get_fighters()[j]);
+                                        }
+                                    }
+                                }
+                                if (otherNinjaToAttack)
+                                {
+                                    pNinjaToAttack->move(pNearEnemy);
+                                }
                             }
                         }
                         else
@@ -130,7 +145,7 @@ namespace ariel
         {
             // Create an array of integers with size equal to fighters.size()
             size_t size_enemy = (*enemy).get_fighters().size();
-            int* array = new int[size_enemy];
+            int *array = new int[size_enemy];
 
             // Initialize all elements to 0
             for (size_t i = 0; i < size_enemy; i++)
@@ -141,14 +156,14 @@ namespace ariel
             // Find the closest enemy to each fighter
             for (size_t i = 0; i < fighters.size(); i++)
             {
-                if ((fighters[i]->get_Hit_points() > 0)&&(fighters[i]->isNinja()))
+                if ((fighters[i]->get_Hit_points() > 0) && (fighters[i]->isNinja()))
                 {
                     ninjaNotFound = false;
                     size_t enemy_location = (size_t)this->findClosestEnemy(fighters[i], enemy);
                     array[enemy_location]++;
-                    if(fighters[i]->getLocation().distance(enemy->get_fighters()[enemy_location]->getLocation()) <= 1)
+                    if (fighters[i]->getLocation().distance(enemy->get_fighters()[enemy_location]->getLocation()) <= 1)
                     {
-                        array[enemy_location]+=2;
+                        array[enemy_location] += 2;
                     }
                 }
             }
@@ -177,7 +192,7 @@ namespace ariel
         int location_min_life = 0;
         for (size_t i = 0; i < enemy->get_fighters().size(); i++)
         {
-            if ((enemy->get_fighters()[i]->get_Hit_points() > 0)&&(enemy->get_fighters()[i]->get_Hit_points() < min_life))
+            if ((enemy->get_fighters()[i]->get_Hit_points() > 0) && (enemy->get_fighters()[i]->get_Hit_points() < min_life))
             {
                 min_life = enemy->get_fighters()[i]->get_Hit_points();
                 location_min_life = i;
